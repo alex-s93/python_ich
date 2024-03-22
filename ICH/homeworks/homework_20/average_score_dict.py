@@ -14,7 +14,7 @@
 # Пример вывода:
 #
 # {'Alice': 89.0, 'Bob': 80.66666666666667, 'Carol': 91.66666666666667}
-def calculate_average_grade(**score_dict):
+def calculate_average_grade(score_dict):
     avg_grades = {}
     for key, value in score_dict.items():
         avg_grades[key] = sum(value) / len(value)
@@ -28,5 +28,5 @@ grades = {
     'Carol': [92, 88, 95]
 }
 
-print(calculate_average_grade(**grades))
+print(calculate_average_grade(grades))
 
