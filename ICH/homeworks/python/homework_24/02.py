@@ -8,7 +8,7 @@ def arithmetic_generator(dif):
 
 
 step = int(input("What is step of arithmetic progression? "))
-amount = int(input("How many numbers of arithmetic progression you would like to print? "))
+amount = int(input("How many numbers of arithmetic progression would you like to print? "))
 
 gen = arithmetic_generator(step)
 
