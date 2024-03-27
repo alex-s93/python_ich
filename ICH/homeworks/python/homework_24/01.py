@@ -20,7 +20,7 @@ def sum_generator():
         while True:
             num = yield summa
             if num == 0:
-                raise StopIteration(summa)
+                raise StopIteration()
             summa += num
     except StopIteration:
         return summa
@@ -37,3 +37,29 @@ while True:
         print("The current sum is:", result)
         gen.close()
         break
+
+
+
+# ------------------------------------------------------------------------------------------------------------------------------
+# NOTE: Код ниже - самый оптимальный. Но он не соответствует условию задачи а именно:
+# --- Если генератор получает на вход число 0, он должен прекращать работу и вернуть окончательную сумму.
+# Поэтому было принято решение с обработкой входящего значения в самом генераторе. Но мне не нравится двойная обработка
+# исключения StopIteration. Можно ли это сделать лучше?
+# ------------------------------------------------------------------------------------------------------------------------------
+#
+# def sum_generator():
+#     summa = 0
+#     while True:
+#         num = yield summa
+#         summa += num
+#
+#
+# gen = sum_generator()
+# next(gen)
+#
+# while True:
+#     number = int(input("Enter a number for summing (or 0 for program finishing): "))
+#     print("The current sum is:", gen.send(number))
+#     if number == 0:
+#         gen.close()
+#         break
