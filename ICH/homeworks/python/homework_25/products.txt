@@ -1,0 +1,11 @@
+Apple, 1.50, 10
+Banana, 0.75, 15
+Orange, 1.00, 15
+Grapes, 2.50, 8
+Apple, 1.25, 12
+Watermelon, 5.00, 3
+Pineapple, 2.75, 6
+Mango, 2.00, 10
+Strawberry, 3.50, 5
+Kiwi, 1.50, 9
+Peach, 2.25, 7
