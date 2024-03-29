@@ -24,6 +24,9 @@ def find_longest_word(word_list: List[str]) -> str:
 
     return sorted_dict.popitem()[1]
 
+    # Подсмотрел на саммари. Не знал что так можно было)
+    # return max(word_list, key=len)
+
 
 words = ["apple", "banana", "cherry", "dragonfruit"]
 

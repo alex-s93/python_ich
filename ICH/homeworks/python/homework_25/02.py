@@ -27,7 +27,7 @@ def get_products_list_from_file(filename: str) -> List[Tuple[str, float, int]]:
 
 
 def calculate_total_price(product_list: List[Tuple[str, float, int]]) -> float:
-    return sum([price for name, price, amount in product_list])
+    return sum([price * amount for name, price, amount in product_list])
 
 
 prod_list = get_products_list_from_file('products.txt')
