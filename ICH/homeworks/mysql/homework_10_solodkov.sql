@@ -44,3 +44,15 @@ FROM city
                      FROM city
                      GROUP BY CountryCode) AS t2
                     ON city.CountryCode = t2.CountryCode;
+
+SELECT AVG(amount_of_cities) AS avg_city_amount
+FROM (SELECT CountryCode, COUNT(Name) AS amount_of_cities
+      FROM city
+      GROUP BY CountryCode) AS t2;
+
+SELECT avg(amount_of_cities) AS avg_city_amount
+FROM country
+         INNER JOIN (SELECT CountryCode, COUNT(Name) AS amount_of_cities
+                     FROM city
+                     GROUP BY CountryCode) AS t2
+                    ON country.Code = t2.CountryCode;
