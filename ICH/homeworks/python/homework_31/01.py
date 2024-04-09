@@ -44,7 +44,7 @@ greet(25, "Анна")
 
 
 # Это пример валидатора с неправильным количеством типов для проверки. Будет следующее сообщение,
-# если расскомментировать строку 57:
+# если расскомментировать строку 56:
 # ValueError: You have entered wrong number of arguments for validating. Expected 3, got 2
 # @validate_args(str, float | int)
 @validate_args(str, float | int, bool)
@@ -53,4 +53,4 @@ def bank_account(name, money_amount, married):
 
 
 bank_account("Alex", 59, True)
-# bank_account("Alex", 59.50, "yes")
+# bank_account("Alex", 59.50)
