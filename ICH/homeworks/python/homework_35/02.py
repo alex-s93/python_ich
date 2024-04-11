@@ -3,23 +3,22 @@
 # помощью запроса GET и использовать регулярные выражения для извлечения слов. Затем функция должна подсчитать
 # количество вхождений каждого слова и вернуть наиболее часто встречающиеся слова в порядке убывания частоты.
 import re
-from collections import Counter
-
 import requests
+from collections import Counter
 
 
 def find_common_words(url_list):
     pattern = re.compile(r'>([а-я\sёЁА-Яa-zA-ZöäüÖÄÜ!,.?-]+)</')
 
-    common_words = {}
+    common_words = Counter()
     for url in url_list:
         response = requests.get(url)
         if response.status_code == 200:
-            site_text = response.text
-            array = " ".join(pattern.findall(site_text)).lower().split()
-            common_words.update(Counter(array).items())
+            text = " ".join(pattern.findall(response.text)).lower()
+            array = re.sub(r"[$&+,:;=?@#|'<>.^*()%!-]", "", text).split()
+            common_words += Counter(array)
         else:
-            print(response.status_code)
+            print(url, "-", response.status_code)
 
     return sorted(common_words.items(), key=lambda x: x[1], reverse=True)
 
