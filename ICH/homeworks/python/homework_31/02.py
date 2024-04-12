@@ -17,32 +17,16 @@
 # Аргументы: 5, 7, Результат: 12
 #
 # Убедитесь, что перед запуском кода у вас создан файл log.txt в той же директории, где находится скрипт Python.
+import logging
 
-def check_log_file():
-    file = None
-    try:
-        file = open("log.txt", "r")
-    except FileNotFoundError:
-        file = open("log.txt", "x")
-    finally:
-        file.close()
-
-
-def write_log_file(value):
-    with open("log.txt", "a") as file:
-        file.write(value)
+logger = logging.getLogger(__name__)
+logging.basicConfig(filename='myapp.log', level=logging.INFO)
 
 
 def log_args(func):
     def wrapper(*args, **kwargs):
-        # NOTE: На самом деле - эта проверка не нужна. Функция open("log.txt", "a") создаст этот файл если его нету.
-        # Но в условии задачи было дополнительно указано про проверку наличия файла.
-        check_log_file()
-
         res = func(*args, **kwargs)
-
-        write_log_file(f"Arguments: {str(args).replace('(', '').replace(')', '')}. Result: {res}.\n")
-
+        logger.info(f"Arguments: {str(args).replace('(', '').replace(')', '')}. Result: {res}.\n")
         return res
 
     return wrapper

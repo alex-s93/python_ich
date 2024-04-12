@@ -22,10 +22,6 @@ class AbstractShape(ABC):
     def area(self):
         raise NotImplementedError
 
-    @abstractmethod
-    def perimeter(self):
-        raise NotImplementedError
-
 
 class Rectangle(AbstractShape):
     def __init__(self, width, height):
