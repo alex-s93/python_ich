@@ -19,6 +19,7 @@ if __name__ == "__main__":
     connection = create_connection(**dbconfig)
     if connection is not None:
         result = execute_read_query(connection, queries.select_all_from_table.format(table=table_name))
+
         if result is not None:
             for row in result:
                 print(row)
@@ -27,3 +28,5 @@ if __name__ == "__main__":
             print("The list of existing tables:")
             for table in tables:
                 print("-", table[0])
+
+        connection.close()

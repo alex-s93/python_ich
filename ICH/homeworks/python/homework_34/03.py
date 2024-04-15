@@ -30,7 +30,7 @@ import re
 
 
 def validate_phone_numbers(numbers):
-    pattern = re.compile(r"(?:\(\+?38\)|\+?38|)(?<!\+)[ \-]?(0[5679]\d)[ \-]?\d{3}[ \-]?\d{2}[ \-]?\d{2}\b")
+    pattern = re.compile(r"\A(?:\(\+?38\)|\+?38|)(?<!\+)[ \-]?(0[5679]\d)[ \-]?\d{3}[ \-]?\d{2}[ \-]?\d{2}\Z")
 
     for number in numbers:
         if not pattern.match(number):
