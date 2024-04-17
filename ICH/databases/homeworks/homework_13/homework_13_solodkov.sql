@@ -79,7 +79,8 @@ CREATE TABLE taxi_order
     FOREIGN KEY (customer_id) REFERENCES customer (id),
     FOREIGN KEY (price_rate_id) REFERENCES price_rate (id),
     FOREIGN KEY (tariff_id) REFERENCES tariff (id),
-    FOREIGN KEY (review_id) REFERENCES review (id)
+    FOREIGN KEY (review_id) REFERENCES review (id),
+    UNIQUE (review_id)
 );
 
 
