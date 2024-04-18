@@ -11,6 +11,7 @@ from ICH.python.homeworks.homework_38 import output_helper
 from db_methods import create_connection
 import input_helper
 import service_methods
+import constants
 
 
 def main():
@@ -22,7 +23,7 @@ def main():
 
     connection = create_connection(**db_config)
     if connection is None:
-        print("It's impossible to connect to DB")
+        print(constants.DB_CONNECTION_ERROR_MSG)
         exit()
 
     while True:
@@ -32,7 +33,7 @@ def main():
             print(err)
             continue
 
-        if user_request == "search films":
+        if user_request == constants.SEARCH_FILMS:
             while True:
                 try:
                     search_criteria = input_helper.get_search_criteria_from_user()
@@ -40,22 +41,22 @@ def main():
                     print(err)
                     continue
 
-                if search_criteria == 'category':
+                if search_criteria == constants.CATEGORY:
                     categories = service_methods.get_categories(connection)
 
                     output_helper.print_categories(categories)
 
                     service_methods.search_by_category(connection, categories)
 
-                if search_criteria == 'production year':
+                if search_criteria == constants.PRODUCTION_YEAR:
                     service_methods.search_by_year(connection)
 
                 print()
-                print("Now you are on the 'search films' level.")
-                if input('Do you wanna return to upper menu? (y/n): ').lower() in ('y', 'yes'):
+                print(constants.CURRENT_LEVEL_MSG.format(constants.SEARCH_FILMS))
+                if input(constants.RETURN_MSG).lower() in ('y', 'yes'):
                     break
 
-        if user_request == "get table description":
+        if user_request == constants.TABLE_DESCRIPTION:
             tables = service_methods.get_tables(connection)
 
             output_helper.print_tables(tables)
@@ -63,8 +64,8 @@ def main():
             service_methods.select_and_show_table_description(connection, tables)
 
         print()
-        print("Now you are on the main level.")
-        if input('Do you wanna quit? (y/n): ').lower() in ('y', 'yes'):
+        print(constants.CURRENT_LEVEL_MSG.format('main'))
+        if input(constants.QUIT_MSG).lower() in ('y', 'yes'):
             connection.close()
             break
 

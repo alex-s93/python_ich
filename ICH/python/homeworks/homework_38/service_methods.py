@@ -2,6 +2,7 @@ from db_methods import execute_read_query
 import input_helper
 import output_helper
 import queries
+import constants
 
 
 def get_categories(connection):
@@ -25,7 +26,7 @@ def select_and_show_table_description(connection, tables):
         output_helper.print_table_description(description)
 
         print()
-        if input('Do you wanna return to previous menu? (y/n): ').lower() in ('y', 'yes'):
+        if input(constants.RETURN_MSG).lower() in ('y', 'yes'):
             break
 
 
@@ -43,7 +44,7 @@ def search_by_category(connection, categories):
         output_helper.print_films_info(films)
 
         print()
-        if input('Do you wanna return to upper menu? (y/n): ').lower() in ('y', 'yes'):
+        if input(constants.RETURN_MSG).lower() in ('y', 'yes'):
             break
 
 
@@ -63,5 +64,5 @@ def search_by_year(connection):
         output_helper.print_films_info(films)
 
         print()
-        if input('Do you wanna return to upper menu? (y/n): ').lower() in ('y', 'yes'):
+        if input(constants.RETURN_MSG).lower() in ('y', 'yes'):
             break

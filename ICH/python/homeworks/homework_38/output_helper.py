@@ -21,6 +21,6 @@ def print_categories(categories):
     for category in categories:
         print(f"{category[0]:>4} - {category[1]:^15}")
 
+
 def print_tables(tables):
     print("Tables:", tables)
-
