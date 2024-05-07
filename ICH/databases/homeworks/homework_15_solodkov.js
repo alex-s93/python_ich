@@ -1,6 +1,6 @@
 // Коллекция imdb : Используя оператор $size , найдите фильмы, написанные 3 сценаристами (writers) и снятые
 // 2 режиссерами (directors)
-db.imdb.find({writers: {$size: 3}, directors: {$size: 3}})
+db.imdb.find({writers: {$size: 3}, directors: {$size: 2}})
 
 // Коллекция bookings: Найдите адрес нахождения автомобиля с vin WME4530421Y135045 по самой последней дате (и времени)
 // final_date
